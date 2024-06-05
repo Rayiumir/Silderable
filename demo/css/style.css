@@ -49,3 +49,10 @@ body {
     pointer-events: none;
     background: #ccc;
 }
+
+pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+  } 
