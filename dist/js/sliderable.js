@@ -1,3 +1,15 @@
+/**!
+ * Sliderable v1.0.0
+ *
+ * Simple and Lightweight Multi Item Carousel Bootstrap
+ *
+ * @copyright Copyright 2024 Rayiumir Limited.
+ * @author    Raymond Baghumian.
+ * @link      https://github.com/Rayiumir/Silderable
+ * @forked    https://bootsnipp.com/snippets/9kBZp
+ *
+ */
+
 $(document).ready(function () {
     var itemsMainDiv = ('.Sliderable');
     var itemsDiv = ('.Sliderable-inner');
