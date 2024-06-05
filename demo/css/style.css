@@ -1,0 +1,51 @@
+body {
+    background-color: #e8e8e8;
+}
+
+/* Sliderable */
+
+.Sliderable {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.Sliderable .Sliderable-inner {
+    transition: 1s ease all;
+    float: left;
+}
+
+.Sliderable .Sliderable-inner .item {
+    float: left;
+}
+
+.Sliderable .Sliderable-inner .item > div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: #f1f1f1;
+    color: #666;
+}
+
+.Sliderable .btn-left,
+.Sliderable .btn-right {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+}
+
+.Sliderable .btn-left {
+    left: 0;
+}
+
+.Sliderable .btn-right {
+    right: 0;
+}
+
+.Sliderable .btn-left.over,
+.Sliderable .btn-right.over {
+    pointer-events: none;
+    background: #ccc;
+}
