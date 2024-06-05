@@ -2,6 +2,8 @@ $(document).ready(function () {
     var itemsMainDiv = ('.Sliderable');
     var itemsDiv = ('.Sliderable-inner');
     var itemWidth = "";
+    var startX = 0;
+    var endX = 0;
 
     $('.btn-left, .btn-right').click(function () {
         var condition = $(this).hasClass("btn-left");
@@ -13,11 +15,28 @@ $(document).ready(function () {
 
     ResCarouselSize();
 
-
-
-
     $(window).resize(function () {
         ResCarouselSize();
+    });
+
+    // Adding touch event listeners
+    $(itemsDiv).on('touchstart', function(event) {
+        startX = event.originalEvent.touches[0].clientX;
+    });
+
+    $(itemsDiv).on('touchmove', function(event) {
+        endX = event.originalEvent.touches[0].clientX;
+    });
+
+    $(itemsDiv).on('touchend', function(event) {
+        var threshold = 50; // minimum swipe distance
+        if (startX - endX > threshold) {
+            // Swipe left
+            click(1, $(this).closest(itemsMainDiv).find('.btn-right')[0]);
+        } else if (endX - startX > threshold) {
+            // Swipe right
+            click(0, $(this).closest(itemsMainDiv).find('.btn-left')[0]);
+        }
     });
 
     //this function define the size of the items
@@ -64,7 +83,6 @@ $(document).ready(function () {
 
         });
     }
-
 
     //this function used to move the items
     function ResCarousel(e, el, s) {
