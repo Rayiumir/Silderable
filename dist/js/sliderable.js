@@ -16,6 +16,8 @@ $(document).ready(function () {
     var itemWidth = "";
     var startX = 0;
     var endX = 0;
+    var autoPlayInterval = 3000; // Autoplay interval in milliseconds
+    var autoPlayTimer;
 
     $('.btn-left, .btn-right').click(function () {
         var condition = $(this).hasClass("btn-left");
@@ -25,7 +27,9 @@ $(document).ready(function () {
             click(1, this)
     });
 
+    // Initialize carousel size
     ResCarouselSize();
+    setAutoplay();
 
     $(window).resize(function () {
         ResCarouselSize();
@@ -34,6 +38,7 @@ $(document).ready(function () {
     // Adding touch event listeners
     $(itemsDiv).on('touchstart', function(event) {
         startX = event.originalEvent.touches[0].clientX;
+        clearAutoplay(); // Clear autoplay on touch
     });
 
     $(itemsDiv).on('touchmove', function(event) {
@@ -49,6 +54,7 @@ $(document).ready(function () {
             // Swipe right
             click(0, $(this).closest(itemsMainDiv).find('.btn-left')[0]);
         }
+        setAutoplay(); // Restart autoplay after touch
     });
 
     //this function define the size of the items
@@ -131,6 +137,23 @@ $(document).ready(function () {
         var Parent = "#" + $(ee).parent().attr("id");
         var slide = $(Parent).attr("data-slide");
         ResCarousel(ell, Parent, slide);
+    }
+
+    // Functions Autoplay and Clear Autoplay
+
+    function setAutoplay() {
+        clearAutoplay(); // Clear any existing timers
+        autoPlayTimer = setInterval(function () {
+            $('.Sliderable').each(function () {
+                click(1, $(this).find('.btn-right')[0]);
+            });
+        }, autoPlayInterval);
+    }
+
+    function clearAutoplay() {
+        if (autoPlayTimer) {
+            clearInterval(autoPlayTimer);
+        }
     }
 
 });
