@@ -145,7 +145,22 @@ $(document).ready(function () {
         clearAutoplay(); // Clear any existing timers
         autoPlayTimer = setInterval(function () {
             $('.Sliderable').each(function () {
-                click(1, $(this).find('.btn-right')[0]);
+                var $carousel = $(this);
+                var $itemsDiv = $carousel.find(itemsDiv);
+                var itemsCondition = $itemsDiv.width() - $carousel.width();
+                var divStyle = $itemsDiv.css('transform');
+                var values = divStyle.match(/-?[\d\.]+/g);
+                var xds = Math.abs(values[4]);
+                var slide = $carousel.attr("data-slide");
+
+                if (xds >= itemsCondition - itemWidth / 2) {
+                    // Reset to start if at the end
+                    $itemsDiv.css('transform', 'translateX(0px)');
+                    $carousel.find('.btn-left').addClass("over");
+                    $carousel.find('.btn-right').removeClass("over");
+                } else {
+                    click(1, $carousel.find('.btn-right')[0]);
+                }
             });
         }, autoPlayInterval);
     }
