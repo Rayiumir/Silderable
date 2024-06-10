@@ -1,5 +1,5 @@
 /**!
- * Sliderable v1.0.0
+ * Sliderable v2.0.0
  *
  * Simple and Lightweight Multi Item Carousel Bootstrap
  *
@@ -16,7 +16,6 @@ $(document).ready(function () {
     var itemWidth = "";
     var startX = 0;
     var endX = 0;
-    var autoPlayInterval = 3000; // Autoplay interval in milliseconds
     var autoPlayTimer;
 
     $('.btn-left, .btn-right').click(function () {
@@ -24,12 +23,19 @@ $(document).ready(function () {
         if (condition)
             click(0, this);
         else
-            click(1, this)
+            click(1, this);
+
+        if (options.autoPlay) {
+            setAutoplay(); // Restart autoplay after manual click
+        }
     });
 
     // Initialize carousel size
     ResCarouselSize();
-    setAutoplay();
+
+    if (options.autoPlay) {
+        setAutoplay();
+    }
 
     $(window).resize(function () {
         ResCarouselSize();
@@ -46,15 +52,16 @@ $(document).ready(function () {
     });
 
     $(itemsDiv).on('touchend', function(event) {
-        var threshold = 50; // minimum swipe distance
-        if (startX - endX > threshold) {
+        if (startX - endX > options.swipeThreshold) {
             // Swipe left
             click(1, $(this).closest(itemsMainDiv).find('.btn-right')[0]);
-        } else if (endX - startX > threshold) {
+        } else if (endX - startX > options.swipeThreshold) {
             // Swipe right
             click(0, $(this).closest(itemsMainDiv).find('.btn-left')[0]);
         }
-        setAutoplay(); // Restart autoplay after touch
+        if (options.autoPlay) {
+            setAutoplay(); // Restart autoplay after touch
+        } // Restart autoplay after touch
     });
 
     //this function define the size of the items
@@ -162,7 +169,7 @@ $(document).ready(function () {
                     click(1, $carousel.find('.btn-right')[0]);
                 }
             });
-        }, autoPlayInterval);
+        }, options.autoPlayInterval);
     }
 
     function clearAutoplay() {
