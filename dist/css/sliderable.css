@@ -13,7 +13,7 @@ body {
 }
 
 .Sliderable .Sliderable-inner {
-    transition: 1s ease all;
+    transition: transform 0.5s ease;
     float: left;
 }
 
@@ -48,4 +48,5 @@ body {
 .Sliderable .btn-right.over {
     pointer-events: none;
     background: #ccc;
+    visibility: hidden;
 }

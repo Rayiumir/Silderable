@@ -103,8 +103,8 @@ $(document).ready(function () {
                 $(this).outerWidth(itemWidth);
             });
 
-            $(".leftLst").addClass("over");
-            $(".rightLst").removeClass("over");
+            $(".btn-left").addClass("over");
+            $(".btn-right").removeClass("over");
 
         });
     }
@@ -136,7 +136,7 @@ $(document).ready(function () {
                 $(el + ' ' + rightBtn).addClass("over");
             }
         }
-        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval+ 'px)');
     }
 
     //It is used to get some elements from btn
