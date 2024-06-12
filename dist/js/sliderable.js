@@ -1,5 +1,5 @@
 /**!
- * Sliderable v2.0.0
+ * Sliderable v2.1.0
  *
  * Simple and Lightweight Multi Item Carousel Bootstrap
  *
