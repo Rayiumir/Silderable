@@ -20,15 +20,26 @@ New Features :
 
 # How to use
 
-Calling File Javascript :
+Javascript :
 
 ```javascript
 <script src="dist/js/sliderable.js"></script>
 ```
-Calling File CSS :
+
+CSS :
 
 ```css
 <link rel="stylesheet" href="dist/css/sliderable.css">
+```
+
+# Options
+
+```
+var options = {
+    autoPlay: true, // Or false
+    autoPlayInterval: 3000, // Autoplay interval in milliseconds
+    swipeThreshold: 50, // Minimum swipe distance in pixels
+};
 ```
 
 # Demo
