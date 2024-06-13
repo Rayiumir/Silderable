@@ -113,12 +113,12 @@ $(document).ready(function () {
     function ResCarousel(e, el, s) {
         var leftBtn = ('.btn-left');
         var rightBtn = ('.btn-right');
-        var translateXval = '';
+        //var translateXval = '';
         var divStyle = $(el + ' ' + itemsDiv).css('transform');
         var values = divStyle.match(/-?[\d\.]+/g);
-        var xds = Math.abs(values[4]);
+        var xds = Math.abs(parseFloat(values[4])); // use parseFloat to handle decimal values
         if (e == 0) {
-            translateXval = parseInt(xds) - parseInt(itemWidth * s);
+            translateXval = xds - (itemWidth * s);
             $(el + ' ' + rightBtn).removeClass("over");
 
             if (translateXval <= itemWidth / 2) {
@@ -128,7 +128,7 @@ $(document).ready(function () {
         }
         else if (e == 1) {
             var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-            translateXval = parseInt(xds) + parseInt(itemWidth * s);
+            translateXval = xds + (itemWidth * s);
             $(el + ' ' + leftBtn).removeClass("over");
 
             if (translateXval >= itemsCondition - itemWidth / 2) {
@@ -136,7 +136,7 @@ $(document).ready(function () {
                 $(el + ' ' + rightBtn).addClass("over");
             }
         }
-        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval+ 'px)');
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(-'+translateXval+'px)');
     }
 
     //It is used to get some elements from btn
