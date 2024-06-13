@@ -13,11 +13,6 @@ Simple and Lightweight Multi Item Carousel Library for Bootstrap 4, 5
 
 This Project by <a href="https://bootsnipp.com/snippets/9kBZp">Bootsnipp</a> Forked and Added New Feature.
 
-New Features :
-
--- Adding touch event listeners
--- Compatibility with mobile and tablets
-
 # How to use
 
 Javascript :
