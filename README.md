@@ -29,12 +29,29 @@ CSS :
 
 # Options
 
-```
+```javascript
 var options = {
     autoPlay: true, // Or false
     autoPlayInterval: 3000, // Autoplay interval in milliseconds
     swipeThreshold: 50, // Minimum swipe distance in pixels
 };
+```
+
+# Error $ Function
+
+If it is on jQuery:
+
+From JavaScript:
+
+```
+13: $(document).ready(function () {});
+
+```
+
+To jQuery:
+
+```
+13: jQuery(document).ready(function ($) {});
 ```
 
 # Demo
