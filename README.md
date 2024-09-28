@@ -39,17 +39,15 @@ var options = {
 
 # Error $ Function
 
-If it is on jQuery:
+If it is on jQuery. From JavaScript:
 
-From JavaScript:
-
-```
+```javascript
 13: $(document).ready(function () {});
 ```
 
 To jQuery:
 
-```
+```javascript
 13: jQuery(document).ready(function ($) {});
 ```
 
