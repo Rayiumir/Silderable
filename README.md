@@ -45,7 +45,6 @@ From JavaScript:
 
 ```
 13: $(document).ready(function () {});
-
 ```
 
 To jQuery:
